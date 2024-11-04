@@ -10,6 +10,9 @@ app = FastAPI()
 scaler = load(ROOT_DIR / "artifacts/scaler.joblib")
 model = load(ROOT_DIR / "artifacts/model.joblib")
 
+# 프로메테우스 메트릭 수집 객체(instruementor)에 FastAPI 애플리케이션을 등록
+instrumentator.instrument(app).expose(app, include_in_schema=False, should_gzip=True)
+
 
 @app.get("/")
 def root():

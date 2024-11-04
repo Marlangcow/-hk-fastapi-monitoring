@@ -11,3 +11,9 @@ scrape_configs:
   static_configs:
   - targets:
     - js-fastapi-monitoring  # metrics from model
+    
+- job_name: 'jenkins'
+  metrics_path: /prometheus/
+  static_configs:
+    - targets:
+      - <YOUR_PUBLIC_IP>:8080
